@@ -1,8 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falcon Dynamics | Project Management & Engineering Solutions</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-</script>
+    body {
+      margin: 0;
+      padding: 0;
+      font: var(--text-base);
+      color: #c5d3e0;
+      background: #0d1117;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #0a0f1a;
+      border-bottom: 1px solid rgba(82, 134, 168, 0.2);
+    }
+
+    .nav-container {
+      max-width: var(--container-xl);
+      margin: 0 auto;
+      padding: var(--space-4) var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      filter: brightness(1.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #0a0f1a 0%, #0f1626 50%, #1a2d3a 100%);
+      color: var(--text-on-dark);
+      padding: var(--space-16) var(--gutter) var(--space-12) var(--gutter);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(82, 134, 168, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(181, 32, 46, 0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 1;
+    }
+
+
+
+    .hero-eyebrow {
+      font: var(--text-eyebrow);
+      letter-spacing: var(--ls-eyebrow);
+      text-transform: uppercase;
+      color: #00d9ff;
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+    }
+
+    .hero-eyebrow::before {
+      content: "";
+      width: 24px;
+      height: 2px;
+      background: #00d9ff;
+    }
+
+    .hero-title {
+      font: var(--text-display);
+      color: #ffffff;
+      margin: 0 0 var(--space-4) 0;
+      line-height: var(--lh-tight);
+      text-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+    }
+
+    .hero-subtitle {
+      font: var(--text-lead);
+      color: var(--text-on-dark-muted);
+      margin: 0 0 var(--space-8) 0;
+      line-height: var(--lh-relaxed);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Content Sections */
+    .content {
+      max-width: var(--container-xl);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .section {
+      padding: var(--section-y) 0;
+      border-bottom: 1px solid rgba(82, 134, 168, 0.15);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-intro {
+      max-width: var(--container-md);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .section-intro p {
+      font: var(--text-lead);
+      color: #1a2a38;
+      margin: 0;
+      line-height: var(--lh-relaxed);
+    }
+
+    /* Service Cards Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-8);
+      margin-top: var(--space-12);
+    }
+
+    .service-card {
+      background: linear-gradient(135deg, #1a2332 0%, #0f1a28 100%);
+      border: 1px solid rgba(0, 217, 255, 0.2);
+      border-radius: 12px;
+      padding: var(--space-8);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      border-color: #00d9ff;
+      box-shadow: 0 0 30px rgba(0, 217, 255, 0.2), 0 8px 24px rgba(0, 0, 0, 0.5);
+      transform: translateY(-4px);
+      background: linear-gradient(135deg, #1f2a38 0%, #1a2538 100%);
+    }
+
+    .service-number {
+      font: var(--text-eyebrow);
+      color: #00d9ff;
+      margin-bottom: var(--space-3);
+    }
+
+    .service-title {
+      font: var(--text-h4);
+      color: #ffffff;
+      margin: 0 0 var(--space-4) 0;
+    }
+
+    .service-description {
+      font: var(--text-base);
+      color: #a8b8c8;
+      margin: 0 0 var(--space-6) 0;
+      line-height: var(--lh-body);
+      flex-grow: 1;
+    }
+
+    .service-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .service-list li {
+      font: var(--text-small);
+      color: #8a99a8;
+      padding-left: var(--space-6);
+      position: relative;
+      line-height: var(--lh-body);
+    }
+
+    .service-list li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #00d9ff;
+      font-weight: bold;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #0a0f1a 0%, #1a2d3a 50%, #0f1626 100%);
+      color: var(--text-on-dark);
+      padding: var(--section-y) var(--gutter);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 60%, rgba(181, 32, 46, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .cta-container {
+      position: relative;
+      z-index: 1;
+    }
+
+
+
+    .cta-title {
+      font: var(--text-h2);
+      color: #ffffff;
+      margin: 0 0 var(--space-6) 0;
+      text-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+    }
+
+    .cta-description {
+      font: var(--text-lead);
+      color: #a8b8c8;
+      margin: 0 0 var(--space-8) 0;
+      line-height: var(--lh-relaxed);
+    }
+
+    /* Footer */
+    footer {
+      background: #0a0f1a;
+      color: var(--text-on-dark);
+      padding: var(--space-12) var(--gutter);
+      text-align: center;
+      font: var(--text-small);
+      border-top: 1px solid rgba(0, 217, 255, 0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: var(--fs-4xl);
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-container {
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body class="fd-root">
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#" class="nav-brand">
+        <img src="logo-dark.png" alt="Falcon Dynamics" style="height: 40px; width: auto;">
+      </a>
+      <div style="font: var(--text-small); color: var(--text-muted);">Services</div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-eyebrow">Cutting-Edge Solutions</div>
+      <h1 class="hero-title">Our Services</h1>
+      <p class="hero-subtitle">Cutting-Edge Project Management & Intelligent Engineering Solutions</p>
+      <div class="hero-cta">
+        <a href="mailto:Falcon.DXB@outlook.com?subject=Contact%20Falcon%20Dynamics%20Project%20Management%20Services" style="padding: var(--space-4) var(--space-8); font: var(--text-base); background: linear-gradient(135deg, #ff0080 0%, #ff4d00 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; text-decoration: none; display: inline-block; box-shadow: 0 0 20px rgba(255, 0, 128, 0.3);">Contact Our Team</a>
+        <a href="mailto:Falcon.DXB@outlook.com?subject=Contact%20Falcon%20Dynamics%20Project%20Management%20Services" style="padding: var(--space-4) var(--space-8); font: var(--text-base); background: transparent; color: #00d9ff; border: 2px solid #00d9ff; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; text-decoration: none; display: inline-block; box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);">Schedule a Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="content">
+    <div style="padding: var(--space-12) 0; border-bottom: 1px solid rgba(82, 134, 168, 0.15);">
+      <div class="section-intro">
+        <p>At Falcon Dynamics, we bridge the gap between heavy industry expertise and advanced technological innovation. We deliver high-impact consulting, training, and digital development tailored to optimize operations and future-proof your business.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="content">
+    <div style="padding: var(--space-12) 0;">
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card">
+          <div class="service-number">01</div>
+          <h3 class="service-title">Drilling & Well Engineering Consulting</h3>
+          <p class="service-description">Maximize efficiency and minimize risk with world-class engineering insights. We provide end-to-end consulting services for complex drilling and well operations.</p>
+          <ul class="service-list">
+            <li>Well planning, design, and feasibility studies</li>
+            <li>Operational risk management and hazard assessment</li>
+            <li>On-site and remote drilling operational support</li>
+            <li>Technical troubleshooting and performance optimization</li>
+          </ul>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card">
+          <div class="service-number">02</div>
+          <h3 class="service-title">Specialized Industry Training</h3>
+          <p class="service-description">Equip your workforce with the critical skills required for modern, high-stakes industrial environments. We deliver targeted training programs designed by industry veterans.</p>
+          <ul class="service-list">
+            <li>Advanced Drilling and Well Engineering practices</li>
+            <li>Safety, compliance, and operational excellence standards</li>
+            <li>Integration of digital tools into field operations</li>
+            <li>Customized corporate technical workshops</li>
+          </ul>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card">
+          <div class="service-number">03</div>
+          <h3 class="service-title">AI & Digital Solutions Consulting</h3>
+          <p class="service-description">Navigate the digital frontier with confidence. We help organizations integrate advanced data systems and artificial intelligence into their core infrastructure.</p>
+          <ul class="service-list">
+            <li>Digital transformation roadmapping and strategy</li>
+            <li>Predictive maintenance and data analytics integration</li>
+            <li>Process automation to eliminate operational bottlenecks</li>
+            <li>Legacy system modernization and cloud migration</li>
+          </ul>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="service-card">
+          <div class="service-number">04</div>
+          <h3 class="service-title">Digital Assurance Assessments</h3>
+          <p class="service-description">Ensure your digital systems are secure, compliant, and performing optimally. We conduct rigorous independent reviews of your technology stack and digital workflows.</p>
+          <ul class="service-list">
+            <li>Software and system reliability audits</li>
+            <li>Tech stack efficiency and security compliance</li>
+            <li>Digital readiness and vulnerability mapping</li>
+            <li>Data integrity and governance validation</li>
+          </ul>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="service-card">
+          <div class="service-number">05</div>
+          <h3 class="service-title">Agentic AI & Autonomous Workflows</h3>
+          <p class="service-description">Step into the future of automation. We design and implement Agentic AI solutions—autonomous AI agents capable of reasoning, making decisions, and executing complex workflows independently.</p>
+          <ul class="service-list">
+            <li>Autonomous operations monitoring and alerting</li>
+            <li>Intelligent, AI-driven decision support systems</li>
+            <li>Custom workflow automation agents for engineering data</li>
+            <li>Natural language interfaces for complex industrial databases</li>
+          </ul>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="service-card">
+          <div class="service-number">06</div>
+          <h3 class="service-title">Smart App Development</h3>
+          <p class="service-description">Turn your operational ideas into powerful digital tools. We build custom, high-performance mobile and web applications tailored specifically to your business workflows.</p>
+          <ul class="service-list">
+            <li>Enterprise and field-data collection mobile apps</li>
+            <li>Real-time project management dashboards</li>
+            <li>Custom client portals and reporting tools</li>
+            <li>High-security iOS, Android, and Web applications</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <h2 class="cta-title">Ready to elevate your project management and engineering capabilities?</h2>
+      <p class="cta-description">Partner with Falcon Dynamics today. Let's build smarter, safer, and more efficient solutions together.</p>
+      <a href="mailto:Falcon.DXB@outlook.com?subject=Contact%20Falcon%20Dynamics%20Project%20Management%20Services" style="padding: var(--space-4) var(--space-8); font: var(--text-base); background: linear-gradient(135deg, #ff0080 0%, #ff4d00 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: 1rem; text-decoration: none; display: inline-block; box-shadow: 0 0 20px rgba(255, 0, 128, 0.3);">Contact Our Team</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Falcon Dynamics. All rights reserved.</p>
+  </footer>
 </body>
 </html>
