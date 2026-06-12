@@ -7,15 +7,7 @@ Professional services website for Falcon Dynamics built with the Falcon Dynamics
 ```
 export/
 ├── index.html              # Main landing page (rename to index.html at repo root)
-├── styles.css              # Design system stylesheet
-├── tokens/                 # Design tokens
-│   ├── colors.css
-│   ├── typography.css
-│   ├── spacing.css
-│   ├── elevation.css
-│   ├── motion.css
-│   ├── base.css
-│   └── fonts.css
+
 └── README.md              # This file
 ```
 
