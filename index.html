@@ -4,11 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Falcon Dynamics | Project Management & Engineering Solutions</title>
-  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      --gutter: clamp(1.25rem, 4vw, 4rem);
+      --container-md: 860px;
+      --container-xl: 1320px;
+      --fs-sm: 0.875rem;
+      --fs-md: 1rem;
+      --fs-lg: 1.125rem;
+      --fs-xl: 1.375rem;
+      --fs-2xl: 1.75rem;
+      --fs-3xl: 2.25rem;
+      --fs-4xl: 3rem;
+      --fs-6xl: 5.25rem;
+      --fs-2xs: 0.75rem;
+      --fs-3xs: 0.6875rem;
+      --lh-tight: 1.05;
+      --lh-snug: 1.18;
+      --lh-heading: 1.25;
+      --lh-body: 1.6;
+      --lh-relaxed: 1.75;
+      --ls-eyebrow: 0.16em;
+      --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+      --font-body: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+      --text-eyebrow: 500 var(--fs-2xs)/1.2 var(--font-body);
+      --text-lead: 400 var(--fs-lg)/var(--lh-relaxed) var(--font-body);
+      --text-base: 400 var(--fs-md)/var(--lh-body) var(--font-body);
+      --text-small: 400 var(--fs-sm)/var(--lh-body) var(--font-body);
+      --text-h4: 600 var(--fs-xl)/var(--lh-heading) var(--font-display);
+      --text-h2: 700 var(--fs-3xl)/var(--lh-snug) var(--font-display);
+      --text-display: 800 var(--fs-6xl)/var(--lh-tight) var(--font-display);
     }
 
     body {
@@ -47,10 +88,20 @@
       filter: brightness(1.1);
     }
 
+    .nav-brand img {
+      height: 40px;
+      width: auto;
+    }
+
+    .nav-brand-text {
+      font: var(--text-small);
+      color: #8a99a8;
+    }
+
     /* Hero Section */
     .hero {
       background: linear-gradient(135deg, #0a0f1a 0%, #0f1626 50%, #1a2d3a 100%);
-      color: var(--text-on-dark);
+      color: #e0e8f0;
       padding: var(--space-16) var(--gutter) var(--space-12) var(--gutter);
       text-align: center;
       position: relative;
@@ -74,9 +125,9 @@
     .hero-container {
       position: relative;
       z-index: 1;
+      max-width: var(--container-md);
+      margin: 0 auto;
     }
-
-
 
     .hero-eyebrow {
       font: var(--text-eyebrow);
@@ -107,7 +158,7 @@
 
     .hero-subtitle {
       font: var(--text-lead);
-      color: var(--text-on-dark-muted);
+      color: #a8b8c8;
       margin: 0 0 var(--space-8) 0;
       line-height: var(--lh-relaxed);
     }
@@ -119,6 +170,41 @@
       justify-content: center;
     }
 
+    .cta-button {
+      padding: var(--space-4) var(--space-8);
+      font: var(--text-base);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .cta-button-primary {
+      background: linear-gradient(135deg, #ff0080 0%, #ff4d00 100%);
+      color: white;
+      box-shadow: 0 0 20px rgba(255, 0, 128, 0.3);
+    }
+
+    .cta-button-primary:hover {
+      box-shadow: 0 0 30px rgba(255, 0, 128, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .cta-button-secondary {
+      background: transparent;
+      color: #00d9ff;
+      border: 2px solid #00d9ff;
+      box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+    }
+
+    .cta-button-secondary:hover {
+      box-shadow: 0 0 25px rgba(0, 217, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
     /* Content Sections */
     .content {
       max-width: var(--container-xl);
@@ -126,13 +212,9 @@
       padding: 0 var(--gutter);
     }
 
-    .section {
-      padding: var(--section-y) 0;
+    .section-intro-wrapper {
+      padding: var(--space-12) 0;
       border-bottom: 1px solid rgba(82, 134, 168, 0.15);
-    }
-
-    .section:last-of-type {
-      border-bottom: none;
     }
 
     .section-intro {
@@ -146,6 +228,10 @@
       color: #1a2a38;
       margin: 0;
       line-height: var(--lh-relaxed);
+    }
+
+    .services-wrapper {
+      padding: var(--space-12) 0;
     }
 
     /* Service Cards Grid */
@@ -221,8 +307,8 @@
     /* CTA Section */
     .cta-section {
       background: linear-gradient(135deg, #0a0f1a 0%, #1a2d3a 50%, #0f1626 100%);
-      color: var(--text-on-dark);
-      padding: var(--section-y) var(--gutter);
+      color: #e0e8f0;
+      padding: var(--space-16) var(--gutter) var(--space-12) var(--gutter);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -243,9 +329,9 @@
     .cta-container {
       position: relative;
       z-index: 1;
+      max-width: var(--container-md);
+      margin: 0 auto;
     }
-
-
 
     .cta-title {
       font: var(--text-h2);
@@ -264,7 +350,7 @@
     /* Footer */
     footer {
       background: #0a0f1a;
-      color: var(--text-on-dark);
+      color: #e0e8f0;
       padding: var(--space-12) var(--gutter);
       text-align: center;
       font: var(--text-small);
@@ -287,14 +373,14 @@
     }
   </style>
 </head>
-<body class="fd-root">
+<body>
   <!-- Navigation -->
   <nav>
     <div class="nav-container">
       <a href="#" class="nav-brand">
-        <img src="logo-dark.png" alt="Falcon Dynamics" style="height: 40px; width: auto;">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%230A1626;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%235286A8;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='200' height='200' fill='%230d1117'/%3E%3Ccircle cx='100' cy='100' r='80' fill='url(%23grad1)'/%3E%3C/svg%3E" alt="Falcon Dynamics">
       </a>
-      <div style="font: var(--text-small); color: var(--text-muted);">Services</div>
+      <div class="nav-brand-text">Services</div>
     </div>
   </nav>
 
@@ -305,15 +391,15 @@
       <h1 class="hero-title">Our Services</h1>
       <p class="hero-subtitle">Cutting-Edge Project Management & Intelligent Engineering Solutions</p>
       <div class="hero-cta">
-        <a href="mailto:Falcon.DXB@outlook.com?subject=Contact%20Falcon%20Dynamics%20Project%20Management%20Services" style="padding: var(--space-4) var(--space-8); font: var(--text-base); background: linear-gradient(135deg, #ff0080 0%, #ff4d00 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; text-decoration: none; display: inline-block; box-shadow: 0 0 20px rgba(255, 0, 128, 0.3);">Contact Our Team</a>
-        <a href="mailto:Falcon.DXB@outlook.com?subject=Contact%20Falcon%20Dynamics%20Project%20Management%20Services" style="padding: var(--space-4) var(--space-8); font: var(--text-base); background: transparent; color: #00d9ff; border: 2px solid #00d9ff; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; text-decoration: none; display: inline-block; box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);">Schedule a Consultation</a>
+        <a href="/cdn-cgi/l/email-protection#8bcdeae7e8e4e5a5cfd3c9cbe4feffe7e4e4e0a5e8e4e6b4f8fee9e1eee8ffb6c8e4e5ffeae8ffaeb9bbcdeae7e8e4e5aeb9bbcff2e5eae6e2e8f8aeb9bbdbf9e4e1eee8ffaeb9bbc6eae5eaeceee6eee5ffaeb9bbd8eef9fde2e8eef8" class="cta-button cta-button-primary">Contact Our Team</a>
+        <a href="/cdn-cgi/l/email-protection#0d4b6c616e62632349554f4d62787961626266236e6260327e786f67686e79304e6263796c6e79283f3d4b6c616e6263283f3d4974636c60646e7e283f3d5d7f6267686e79283f3d406c636c6a6860686379283f3d5e687f7b646e687e" class="cta-button cta-button-secondary">Schedule a Consultation</a>
       </div>
     </div>
   </section>
 
   <!-- Intro -->
   <section class="content">
-    <div style="padding: var(--space-12) 0; border-bottom: 1px solid rgba(82, 134, 168, 0.15);">
+    <div class="section-intro-wrapper">
       <div class="section-intro">
         <p>At Falcon Dynamics, we bridge the gap between heavy industry expertise and advanced technological innovation. We deliver high-impact consulting, training, and digital development tailored to optimize operations and future-proof your business.</p>
       </div>
@@ -322,7 +408,7 @@
 
   <!-- Services -->
   <section class="content">
-    <div style="padding: var(--space-12) 0;">
+    <div class="services-wrapper">
       <div class="services-grid">
         <!-- Service 1 -->
         <div class="service-card">
@@ -410,7 +496,7 @@
     <div class="cta-container">
       <h2 class="cta-title">Ready to elevate your project management and engineering capabilities?</h2>
       <p class="cta-description">Partner with Falcon Dynamics today. Let's build smarter, safer, and more efficient solutions together.</p>
-      <a href="mailto:Falcon.DXB@outlook.com?subject=Contact%20Falcon%20Dynamics%20Project%20Management%20Services" style="padding: var(--space-4) var(--space-8); font: var(--text-base); background: linear-gradient(135deg, #ff0080 0%, #ff4d00 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; font-size: 1rem; text-decoration: none; display: inline-block; box-shadow: 0 0 20px rgba(255, 0, 128, 0.3);">Contact Our Team</a>
+      <a href="/cdn-cgi/l/email-protection#da9cbbb6b9b5b4f49e82989ab5afaeb6b5b5b1f4b9b5b7e5a9afb8b0bfb9aee799b5b4aebbb9aeffe8ea9cbbb6b9b5b4ffe8ea9ea3b4bbb7b3b9a9ffe8ea8aa8b5b0bfb9aeffe8ea97bbb4bbbdbfb7bfb4aeffe8ea89bfa8acb3b9bfa9" class="cta-button cta-button-primary">Contact Our Team</a>
     </div>
   </section>
 
@@ -418,5 +504,5 @@
   <footer>
     <p>&copy; 2026 Falcon Dynamics. All rights reserved.</p>
   </footer>
-</body>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
 </html>
